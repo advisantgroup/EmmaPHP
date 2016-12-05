@@ -1,5 +1,5 @@
 <?php
-namespace advisantgroup/EmmaPHP;
+namespace advisantgroup\EmmaPHP;
 
 	require_once 'EmmaExceptions.php';
 	
