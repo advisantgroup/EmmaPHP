@@ -1,0 +1,16 @@
+"repositories": [
+    {
+        "type": "package",
+        "package": {
+            "name" : "advisantgroup/EmmaPHP",
+            "version": "dev-master",
+            "description" : "Test",
+            "keywords": ["graph", "reports"],
+            "source": {
+                "url": "https://github.com/advisantgroup/EmmaPHP.git",
+                "type": "git",
+                "reference": "master"
+            }
+        }
+    }
+],
