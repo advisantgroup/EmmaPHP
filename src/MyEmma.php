@@ -1,4 +1,5 @@
 <?php
+namespace Advisantgroup;
 require_once 'lib/Emma/Emma.php';
 /**
 * Emma Methods
