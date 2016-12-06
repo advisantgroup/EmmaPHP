@@ -1,4 +1,7 @@
 <?php
+	namespace Advisantgroup;
+	use Exception;
+
 	/**
 	 * Emma API Wrapper Exception for if there is a missing Account ID
 	 *

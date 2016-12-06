@@ -1,10 +1,10 @@
 <?php
 namespace Advisantgroup;
-require_once 'lib/Emma/Emma.php';
+use Advisantgroup\Emma;
 /**
 * Emma Methods
 */
-class Myemma
+class MyEmma
 {
 	protected $emmaObj;
 	protected $account_id;
@@ -25,15 +25,19 @@ class Myemma
 
 	public function set_emma()
 	{
+		if($this->account_id=='' || $this->public_key=='' || $this->private_key=='')
+			return false;
 		$this->emmaObj = '';
 		$this->emmaObj = new Emma($this->account_id, $this->public_key, $this->private_key);
+		return true;
 	}
 
 	public function list_member()
 	{
 		try
 		{
-			$this->set_emma();
+			if(!$this->set_emma())
+				return false;
 			$req = $this->emmaObj->myMembers();
 			return $req;
 		}
@@ -78,7 +82,9 @@ class Myemma
 		    
 		    $my_member['fields'] = $member_array['fields'];
 
-			$this->set_emma();
+			if(!$this->set_emma())
+				return false;
+
 		    $req = $this->emmaObj->membersAddSingle($my_member);
 		    return $req;
 		}
@@ -109,7 +115,9 @@ class Myemma
 			$my_member = array();
 		    $my_member['email'] = $new_email;
 
-			$this->set_emma();
+			if(!$this->set_emma())
+				return false;
+
 		    $req = $this->emmaObj->membersUpdateSingle($member_data->member_id, $my_member);
 		    return $req;
 		}
@@ -160,7 +168,9 @@ class Myemma
 				$my_member['group_ids'] = array((int)$member_group_id);
 			}
 
-			$this->set_emma();
+			if(!$this->set_emma())
+				return false;
+
 		    $req = $this->emmaObj->membersBatchAdd($my_member);
 		    return $req;
 		}
@@ -177,7 +187,9 @@ class Myemma
 
 		try
 		{
-			$this->set_emma();
+			if(!$this->set_emma())
+				return false;
+
 		    $req = $this->emmaObj->membersImported($import_id);
 		    return $req;
 		}
@@ -201,7 +213,10 @@ class Myemma
 			$member = array();
 		    $member['members'] = $emails;
 		    $member['group_ids'] = array((int)$group_id);
-			$this->set_emma();
+			
+			if(!$this->set_emma())
+				return false;
+
 		    $req = $this->emmaObj->membersBatchAdd($member);
 		    return $req;
 		}
@@ -220,7 +235,9 @@ class Myemma
 
 		try
 		{
-			$this->set_emma();
+			if(!$this->set_emma())
+				return false;
+
 			$req = $this->emmaObj->membersListByEmail($email);
 			return $req;
 		}
@@ -234,7 +251,9 @@ class Myemma
 	{
 		try
 		{
-			$this->set_emma();
+			if(!$this->set_emma())
+				return false;
+
 			$req = $this->emmaObj->myFields();
 			
 			if($include_default_fields===true)
@@ -287,7 +306,10 @@ class Myemma
 			$data['column_order'] = 100;
 
 			$response = array();
-			$this->set_emma();
+			
+			if(!$this->set_emma())
+				return false;
+
 			$req = $this->emmaObj->fieldsAddSingle($data);
 
 			$response['id'] = $req;
@@ -306,7 +328,9 @@ class Myemma
 	{
 		try
 		{
-			$this->set_emma();
+			if(!$this->set_emma())
+				return false;
+
 			$req = $this->emmaObj->myGroups();
 			
 			if($include_default_groups===true)
@@ -328,7 +352,10 @@ class Myemma
 		{
 		    $group = array();
 		    $group = array('groups' => array(array('group_name' => $group_name)));
-		    $this->set_emma();
+		    
+		    if(!$this->set_emma())
+				return false;
+		    
 		    $req = $this->emmaObj->groupsAdd($group);
 		    return $req;
 		}
@@ -343,7 +370,10 @@ class Myemma
 		try
 		{
 			$response = array();
-			$this->set_emma();
+			
+			if(!$this->set_emma())
+				return false;
+
 			$req = $this->emmaObj->mySearches();
 
 			if($include_default_searches===true)
@@ -367,7 +397,10 @@ class Myemma
 		try
 		{
 			$response = array();
-			$this->set_emma();
+			
+			if(!$this->set_emma())
+				return false;
+
 			$req = $this->emmaObj->searchesCreateSingle($search_data);
 
 			return $req;
@@ -380,7 +413,9 @@ class Myemma
 
 	public function has_access_to_event_api()
 	{
-		$this->set_emma();
+		if(!$this->set_emma())
+			return false;
+
 		$resp = $this->emmaObj->hasEventAccess();
 		
 		if(!$resp)
