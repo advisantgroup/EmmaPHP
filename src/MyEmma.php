@@ -1,10 +1,7 @@
 <?php
-
-namespace Advisantgroup;
-
 require_once 'lib/Emma/Emma.php';
 /**
-* Sample code to demonstrate using emma methods
+* Emma Methods
 */
 class Myemma
 {
