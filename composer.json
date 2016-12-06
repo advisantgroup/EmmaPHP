@@ -1,5 +1,10 @@
 {
     "name": "advisantgroup/emmaphp",
     "minimum-stability": "dev",
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Advisantgroup\\" : "src/"
+        }
+    }
 }
