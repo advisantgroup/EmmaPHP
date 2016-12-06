@@ -2,7 +2,7 @@
     "name": "advisantgroup/emmaphp",
     "license": "MIT",
     "description": "A PHP wrapper for Emma's API.",
-	"version": "1.0.0",
+	"version": "1.0.1",
     "minimum-stability": "dev",
     "require": {
 		"php": ">=5.6",
