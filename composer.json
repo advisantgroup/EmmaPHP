@@ -1,7 +1,14 @@
 {
     "name": "advisantgroup/emmaphp",
-    "minimum-stability": "dev",
-    "require": {},
+    "license": "MIT",
+    "description": "A PHP wrapper for Emma's API.",
+	"version": "1.0.0",
+    "minimum-stability": "stable",
+    "require": {
+		"php": ">=5.6",
+		"ext-curl": "*",
+		"ext-json": "*",
+	},
     "autoload": {
         "psr-4": {
             "Advisantgroup\\" : "src/"
