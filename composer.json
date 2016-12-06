@@ -1,12 +1,5 @@
 {
-    "name" : "advisantgroup/emmaphp",
-    "version": "dev-master",
-    "description" : "Test",
-    "keywords": ["graph", "reports"],
-    "source": {
-        "url": "https://github.com/advisantgroup/EmmaPHP.git",
-        "type": "git",
-        "reference": "master"
-    }
+    "name": "advisantgroup/emma-php",
+    "minimum-stability": "dev",
+    "require": {}
 }
-
