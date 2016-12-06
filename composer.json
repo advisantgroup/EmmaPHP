@@ -1,5 +1,5 @@
 {
     "name": "advisantgroup/emma-php",
-    "minimum-stability": "dev",
+    "minimum-stability": "require-dev",
     "require": {}
 }
