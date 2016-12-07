@@ -1038,6 +1038,7 @@
 		*/
 		protected function _request($url, $verb = null) {
 			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
 			curl_setopt($ch, CURLOPT_USERPWD, "{$this->_pub_key}:{$this->_priv_key}");
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
