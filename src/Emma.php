@@ -65,6 +65,26 @@
 		* API Calls to the Members related endpoint(s)
 		* @see http://api.myemma.com/api/external/members.html
 		*/
+	
+		/**
+		* Check if we have access to EventsAPI
+		* @access public
+		* @return Returns true if we have access to events API false if not
+		*/
+		function hasEventAccess($params = array()) {
+			$this->base_url = 'https://events.e2ma.net/v1/';
+			return $this->post('/events', $params);
+		}
+
+		/**
+		* Send data to EventsAPI
+		* @access public
+		* @return Returns true if events sent successfully, false if not
+		*/
+		function sendEvent($params = array()) {
+			$this->base_url = 'https://events.e2ma.net/v1/';
+			return $this->post('/events', $params);
+		}
 		
 		/**
 		* Get a basic listing of all members in an account.
