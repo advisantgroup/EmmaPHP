@@ -411,6 +411,25 @@ class MyEmma
 		}
 	}
 
+	public function send_event($event_data = '')
+	{
+		if(!$event_data)
+			return false;
+
+		if(!$this->set_emma())
+			return false;
+		
+		$resp = $this->emmaObj->sendEvent($event_data);
+		
+		if(!$resp)
+			return false;
+
+		if(strpos($resp, 'success') !== false && strpos($resp, 'true') !== false)
+			return true;
+			
+		return false;
+	}
+
 	public function has_access_to_event_api()
 	{
 		if(!$this->set_emma())
