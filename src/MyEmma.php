@@ -80,7 +80,8 @@ class MyEmma
 		    if($member_group_id)
 		    	$my_member['group_ids'] = array((int)$member_group_id);
 		    
-		    $my_member['fields'] = $member_array['fields'];
+		    if(count($member_array['fields']>0))
+		    	$my_member['fields'] = $member_array['fields'];
 
 			if(!$this->set_emma())
 				return false;
