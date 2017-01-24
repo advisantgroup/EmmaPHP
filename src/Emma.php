@@ -85,6 +85,15 @@
 			$this->base_url = 'https://events.e2ma.net/v1/';
 			return $this->post('/events', $params);
 		}
+
+		/**
+		* Add mailing response
+		* @access public
+		* @return Returns true if response added false if not
+		*/
+		function addResponse($mailing_id, $params = array()) {
+			return $this->put("/response/{$mailing_id}", $params);
+		}
 		
 		/**
 		* Get a basic listing of all members in an account.

@@ -431,6 +431,28 @@ class MyEmma
 		return false;
 	}
 
+	public function add_response($mailing_id='', $orders = '')
+	{
+		if(!$orders||!$mailing_id)
+		{
+			return false;
+		}
+
+		try
+		{
+			if(!$this->set_emma())
+				return false;
+			
+			$req = $this->emmaObj->addResponse($mailing_id, $orders);
+
+			return $req;
+		}
+		catch(Emma_Invalid_Response_Exception $e)
+		{
+		    return false;
+		}
+	}
+
 	public function has_access_to_event_api()
 	{
 		if(!$this->set_emma())
