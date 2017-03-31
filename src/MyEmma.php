@@ -589,7 +589,16 @@ class MyEmma
         if($is_exists)
         	return $is_exists;
 
-        $group_created = $this->add_group($req_group);
+        $resp = json_decode($this->add_group($req_group));
+        
+        if( is_array( $resp ) )
+        {
+        	$group_created = $resp[0];
+        }
+        else
+        {
+        	$group_created = $resp;
+        }
     	
     	return $group_created;
     }
