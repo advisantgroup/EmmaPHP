@@ -32,6 +32,62 @@ class MyEmma
 		return true;
 	}
 
+    public function products_add($product_data='')
+    {
+        if(!$product_data)
+        {
+            return false;
+        }
+        try
+        {
+            $this->set_emma();
+            $req = $this->emmaObj->addProducts($product_data);
+            return $req;
+        }
+        catch(Emma_Invalid_Response_Exception $e)
+        {
+            // return $e->getHttpBody(); return $e->getMessage();
+            return false;
+        }
+    }
+
+    public function add_bulk_order($order_data='')
+    {
+        if(!$order_data)
+        {
+            return false;
+        }
+        try
+        {
+            $this->set_emma();
+            $req = $this->emmaObj->addBulkOrders($order_data);
+            return $req;
+        }
+        catch(Emma_Invalid_Response_Exception $e)
+        {
+            // return $e->getHttpBody(); return $e->getMessage();
+            return false;
+        }
+    }
+    public function add_single_order($member, $order_data='')
+    {
+        if(!$member && !$order_data)
+        {
+            return false;
+        }
+        try
+        {
+            $this->set_emma();
+            $req = $this->emmaObj->addOrders($member, $order_data);
+            return $req;
+        }
+        catch(Emma_Invalid_Response_Exception $e)
+        {
+            // return $e->getHttpBody(); return $e->getMessage();
+            return false;
+        }
+    }
+
 	public function list_member()
 	{
 		try

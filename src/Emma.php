@@ -67,6 +67,32 @@
 		*/
 	
 		/**
+		* Add product details
+		* @access public
+		* @return Returns true if response added false if not
+		*/
+		function addProducts($params = array()){
+			return $this->post('/products', $params);
+		}
+
+		/**
+		* Add order details
+		* @access public
+		* @return Returns true if response added false if not
+		*/
+		function addBulkOrders($params = array()){
+			return $this->post('/orders/bulk', $params);
+		}
+		/**
+		* Add order details
+		* @access public
+		* @return Returns true if response added false if not
+		*/
+		function addOrders($member, $params = array()){
+			return $this->post('/members/'.$member.'/orders', $params);
+		}
+	
+		/**
 		* Check if we have access to EventsAPI
 		* @access public
 		* @return Returns true if we have access to events API false if not
