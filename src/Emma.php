@@ -65,31 +65,92 @@
 		* API Calls to the Members related endpoint(s)
 		* @see http://api.myemma.com/api/external/members.html
 		*/
-	
+
+		/**
+		* Get detailed information on a particular product.
+		* @param int $id		Product Id
+		* @param array $params		Array Additional HTTP GET params
+		* @access public
+		* @return A single product if one exists.
+		*/
+		function productsListById($id, $params = array()) {
+			return $this->get("/products/{$id}", $params);
+		}
+
+		/**
+		* Get products detail
+		* @access public
+		* @return Returns products object if success false if not
+		*/
+		function myProducts($params = array()){
+			return $this->get('/products', $params);
+		}
+
 		/**
 		* Add product details
 		* @access public
-		* @return Returns true if response added false if not
+		* @return Returns product object if success false if not
 		*/
-		function addProducts($params = array()){
+		function productsAddSingle($params = array()){
 			return $this->post('/products', $params);
+		}
+
+		/**
+		* Update product details
+		* @access public
+		* @return Returns product object if success false if not
+		*/
+		function productsUpdateSingle($id, $params = array()){
+			return $this->post('/products/' . $id, $params);
+		}
+
+		/**
+		* Get detailed information on a particular order.
+		* @param int $member	Member Id
+		* @param int $order		Order Id
+		* @param array $params		Array Additional HTTP GET params
+		* @access public
+		* @return A single order if one exists.
+		*/
+		function ordersListById($member, $order, $params = array()) {
+			return $this->get('/members/'.$member.'/orders/'.$order, $params);
+		}
+
+		/**
+		* Get orders list
+		* @access public
+		* @return Returns orders object if success false if not
+		*/
+		function myOrders($member, $params = array()){
+			return $this->get('/members/'.$member.'/orders', $params);
 		}
 
 		/**
 		* Add order details
 		* @access public
-		* @return Returns true if response added false if not
+		* @return Returns order object if success false if not
 		*/
-		function addBulkOrders($params = array()){
-			return $this->post('/orders/bulk', $params);
+		function ordersAddSingle($member, $params = array()){
+			return $this->post('/members/'.$member.'/orders', $params);
 		}
+
 		/**
 		* Add order details
 		* @access public
-		* @return Returns true if response added false if not
+		* @return Returns job_id if success false if not
 		*/
-		function addOrders($member, $params = array()){
-			return $this->post('/members/'.$member.'/orders', $params);
+		function ordersBatchAdd($params = array()){
+			return $this->post('/orders/bulk', $params);
+		}
+
+		/**
+		* Update order details
+		* @param int $order		Order Id
+		* @access public
+		* @return Returns order object if success false if not
+		*/
+		function ordersUpdateSingle($member, $order, $params = array()){
+			return $this->post('/members/'.$member.'/orders/'.$order, $params);
 		}
 	
 		/**
