@@ -69,6 +69,24 @@ class MyEmma
         }
     }
 
+    public function delete_single_product($id='')
+    {
+        if ( !$id ) {
+            return false;
+        }
+
+        try
+        {
+            $this->set_emma();
+            $req = $this->emmaObj->productsDeleteSingle($id);
+            return $req;
+        }
+        catch(Emma_Invalid_Response_Exception $e)
+        {
+            return false;
+        }
+    }
+
     public function list_products()
     {
         try

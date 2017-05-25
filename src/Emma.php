@@ -105,6 +105,15 @@
 		}
 
 		/**
+        * Delete product details
+        * @access public
+        * @return Returns true if success false if not
+        */
+        function productsDeleteSingle($id){
+            return $this->delete('/products/' . $id);
+        }
+
+		/**
 		* Get detailed information on a particular order.
 		* @param int $member	Member Id
 		* @param int $order		Order Id
