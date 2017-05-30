@@ -1154,7 +1154,9 @@
 				} else {
 					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, strtoupper($verb));
 				}
-				curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->_postData));
+				if (!empty($this->_postData)) {
+					curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->_postData));
+		        }
 			}
 			
 			$data = curl_exec($ch);
