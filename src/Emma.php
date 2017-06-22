@@ -149,7 +149,7 @@
 		* @return Returns job_id if success false if not
 		*/
 		function ordersBatchAdd($params = array()){
-			return $this->post('/orders/bulk', $params);
+			return $this->post('/orders/bulk/external', $params);
 		}
 
 		/**
