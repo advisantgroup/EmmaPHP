@@ -135,6 +135,15 @@
 		}
 
 		/**
+		* Get all orders in the emma account
+		* @access public
+		* @return Returns orders object if success false if not
+		*/
+		function listAllOrders(){
+			return $this->get('/orders');
+		}
+
+		/**
 		* Add order details
 		* @access public
 		* @return Returns order object if success false if not
