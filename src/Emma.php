@@ -77,6 +77,10 @@
 			return $this->get("/products/{$id}", $params);
 		}
 
+		function productsLookup($params = array()) {
+			return $this->get("/products/lookup", $params);
+		}
+
 		/**
 		* Get products detail
 		* @access public
@@ -113,6 +117,10 @@
             return $this->delete('/products/' . $id);
         }
 
+        function productsUnDelete($id) {
+			return $this->put("/products/{$id}/undelete");
+		}
+
 		/**
 		* Get detailed information on a particular order.
 		* @param int $member	Member Id
@@ -141,6 +149,10 @@
 		*/
 		function listAllOrders(){
 			return $this->get('/orders');
+		}
+
+		function ordersLookup($params = array()) {
+			return $this->get("/orders/lookup", $params);
 		}
 
 		/**
