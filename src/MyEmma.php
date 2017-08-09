@@ -709,12 +709,12 @@ class MyEmma
         }
 
         $req_searches = array(
-            "Purchased in last year" => 0,
-            "Purchased in last 30 days" => 0,
-            "Have more than one total order" => 0,
-            "Subscribed, but have not purchased" => 0,
-            "Average purchase is greater than $50" => 0,
-            "Cumulative purchases are greater than $100" => 0
+            "Orders - Purchased in Last Year" => 0,
+            "Orders - Purchase Last 30 Days" => 0,
+            "Orders - More Than 1 Order" => 0,
+            "Orders - Subscribed, but Have Not Purchased" => 0,
+            "Orders - Average Purchases Greater than $50" => 0,
+            "Orders - Cumulative Purchases Greater than $100" => 0
         );
 
         foreach ($req_searches as $req_search => $value)
@@ -835,9 +835,9 @@ class MyEmma
     {
         $data = array();
 
-        $data['Purchased in last year'] = Array
+        $data['Orders - Purchased in Last Year'] = Array
         (
-            'name' => 'Purchased in last year',
+            'name' => 'Orders - Purchased in Last Year',
             'criteria' => Array
             (
                 0 => 'and',
@@ -850,16 +850,16 @@ class MyEmma
                         1 => 'in last',
                         2 => Array
                         (
-                            'day' => 365
+                            'week' => 52
                         )
                     )
                 )
             )
         );
 
-        $data['Purchased in last 30 days'] = Array
+        $data['Orders - Purchase Last 30 Days'] = Array
         (
-            'name' => 'Purchased in last 30 days',
+            'name' => 'Orders - Purchase Last 30 Days',
             'criteria' => Array
             (
                 0 => 'and',
@@ -879,9 +879,9 @@ class MyEmma
             )
         );
 
-        $data['Have more than one total order'] = Array
+        $data['Orders - More Than 1 Order'] = Array
         (
-            'name' => 'Have more than one total order',
+            'name' => 'Orders - More Than 1 Order',
             'criteria' => Array
             (
                 0 => 'and',
@@ -898,9 +898,9 @@ class MyEmma
             )
         );
 
-        $data['Subscribed, but have not purchased'] = Array
+        $data['Orders - Subscribed, but Have Not Purchased'] = Array
         (
-            'name' => 'Subscribed, but have not purchased',
+            'name' => 'Orders - Subscribed, but Have Not Purchased',
             'criteria' => Array
             (
                 0 => 'and',
@@ -917,9 +917,9 @@ class MyEmma
             )
         );
 
-        $data['Average purchase is greater than $50'] = Array
+        $data['Orders - Average Purchases Greater than $50'] = Array
         (
-            'name' => 'Average purchase is greater than $50',
+            'name' => 'Orders - Average Purchases Greater than $50',
             'criteria' => Array
             (
                 0 => 'and',
@@ -936,15 +936,15 @@ class MyEmma
             )
         );
 
-        $data['Cumulative purchases are greater than $100'] = Array
+        $data['Orders - Cumulative Purchases Greater than $100'] = Array
         (
-            'name' => 'Cumulative purchases are greater than $100',
+            'name' => 'Orders - Cumulative Purchases Greater than $100',
             'criteria' => Array
             (
                 0 => 'and',
                 1 => Array
                 (
-                    0 => 'and',
+                    0 => 'or',
                     1 => Array
                     (
                         0 => 'member_field:mag-total-purchased',
@@ -1030,12 +1030,12 @@ class MyEmma
         }
 
         $searches_to_remove = array(
-            "Purchased in last year",
-            "Purchased in last 30 days",
-            "Have more than one total order",
-            "Subscribed, but have not purchased",
-            "Average purchase is greater than $50",
-            "Cumulative purchases are greater than $100"
+            "Orders - Purchased in Last Year",
+            "Orders - Purchase Last 30 Days",
+            "Orders - More Than 1 Order",
+            "Orders - Subscribed, but Have Not Purchased",
+            "Orders - Average Purchases Greater than $50",
+            "Orders - Cumulative Purchases Greater than $100"
         );
 
         $searches_to_send = array();
