@@ -187,6 +187,20 @@ class MyEmma
         }
     }
 
+    public function find_order($source='', $source_id='')
+    {
+        try
+        {
+            $this->set_emma();
+            $req = $this->emmaObj->ordersLookup(['source'=>$source, 'source_order_id'=>$source_id]);
+            return $req;
+        }
+        catch(Emma_Invalid_Response_Exception $e)
+        {
+            return false;
+        }
+    }
+
     public function list_orders_by_id($member='', $order_id='')
     {
         if(!$member || !$order_id)
