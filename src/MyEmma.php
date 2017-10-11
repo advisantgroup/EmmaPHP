@@ -46,8 +46,12 @@ class MyEmma
         }
         catch(Emma_Invalid_Response_Exception $e)
         {
-            // return $e->getHttpBody(); return $e->getMessage();
-            return false;
+            if ($e->getHttpCode()===409) {
+                throw $e;
+            } else {
+                // return $e->getHttpBody(); return $e->getMessage();
+                return false;
+            }
         }
     }
 
@@ -193,6 +197,20 @@ class MyEmma
         {
             $this->set_emma();
             $req = $this->emmaObj->ordersLookup(['source'=>$source, 'source_order_id'=>$source_id]);
+            return $req;
+        }
+        catch(Emma_Invalid_Response_Exception $e)
+        {
+            return false;
+        }
+    }
+
+    public function find_product($source='', $source_id='')
+    {
+        try
+        {
+            $this->set_emma();
+            $req = $this->emmaObj->productsLookup(['source'=>$source, 'source_product_id'=>$source_id]);
             return $req;
         }
         catch(Emma_Invalid_Response_Exception $e)
