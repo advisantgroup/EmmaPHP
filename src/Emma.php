@@ -38,6 +38,8 @@
 		* Cache optional query params for HTTP request
 		*/
 		public $_params = array();
+
+		public $_custom_user_agent = '';
 		
 		protected $_debug = false;
 		
@@ -48,7 +50,7 @@
 		* @param string $priv_api_key	Your Emma Public API Key
 		* @access public
 		*/
-		function __construct($account_id, $pub_api_key, $pri_api_key, $debug = false) {
+		function __construct($account_id, $pub_api_key, $pri_api_key, $debug = false, $custom_user_agent='') {
 			if(empty($account_id))
 				throw new Emma_Missing_Account_Id();
 			
@@ -59,6 +61,7 @@
 			$this->_pub_key = $pub_api_key;
 			$this->_priv_key = $pri_api_key;
 			$this->_debug = $debug;
+			$this->_custom_user_agent = $custom_user_agent;
 		}
 		
 		/** 
@@ -1168,6 +1171,7 @@
 			curl_setopt($ch, CURLOPT_USERPWD, "{$this->_pub_key}:{$this->_priv_key}");
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_USERAGENT, $this->_custom_user_agent);
 			
 			if(isset($verb)) {
 				if($verb == "post") {

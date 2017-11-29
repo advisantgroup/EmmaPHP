@@ -10,8 +10,9 @@ class MyEmma
     protected $account_id;
     protected $public_key;
     protected $private_key;
+    protected $custom_user_agent;
     
-    function __construct($credential='')
+    function __construct($credential='', $custom_user_agent='')
     {
         if(!$credential || !is_array($credential) || !isset($credential['account_id']) || !isset($credential['public_key']) || !isset($credential['private_key']))
         {
@@ -21,6 +22,7 @@ class MyEmma
         $this->account_id = $credential['account_id'];
         $this->public_key = $credential['public_key'];
         $this->private_key = $credential['private_key'];
+        $this->custom_user_agent = $custom_user_agent;
     }
 
     public function set_emma()
@@ -28,7 +30,7 @@ class MyEmma
         if($this->account_id=='' || $this->public_key=='' || $this->private_key=='')
             return false;
         $this->emmaObj = '';
-        $this->emmaObj = new Emma($this->account_id, $this->public_key, $this->private_key);
+        $this->emmaObj = new Emma($this->account_id, $this->public_key, $this->private_key, false, $this->custom_user_agent);
         return true;
     }
 
